@@ -7,15 +7,14 @@ import Header from './components/Header';
 import {connect} from 'react-redux';
 
 import { fetchSmurfs } from "./actions";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 
 const App = (props)=> {
-
-  useEffect(()=>{
-    props.fetchSmurfs()
-  },[])
+  
+  useEffect(() => props.fetchSmurfs(),[])
 
   return (
     <div className="App">

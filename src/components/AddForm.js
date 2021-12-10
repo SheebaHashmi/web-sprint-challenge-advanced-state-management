@@ -5,6 +5,7 @@ import { addSmurf,addError } from '../actions';
 
 
 const initialState = {
+        id:`${Date.now()}`,
         name:"",
         position:"",
         nickname:"",

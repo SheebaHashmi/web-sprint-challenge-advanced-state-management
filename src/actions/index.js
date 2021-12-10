@@ -4,20 +4,20 @@ export const FETCH_START ="FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const ADD_SMURF = "ADD_SMURF";
-export const ADD_ERROR = "ADD_ERROR"
+export const ADD_ERROR = "ADD_ERROR";
+
 export const fetchSmurfs = () => dispatch => {
     dispatch({type:FETCH_START});
+
     axios.get("http://localhost:3333/smurfs")
-    .then(res => {
-        // console.log(res)
-        dispatch({type:FETCH_SUCCESS,payload:res.data})
-    })
+    .then(res => dispatch({type:FETCH_SUCCESS,payload:res.data}))
     .catch(err => dispatch({type:FETCH_FAILURE,payload:err.message}))
 }
 
-export const addSmurf = ({name,position,nickname,description}) => {
-    return({type:ADD_SMURF,payload:{name,position,nickname,description}})
+export const addSmurf = ({id,name,position,nickname,description}) => {
+    return({type:ADD_SMURF,payload:{id,name,position,nickname,description}})
 }
+
 export const addError = (err) => {
     return({type:ADD_ERROR,payload:err})
 }
