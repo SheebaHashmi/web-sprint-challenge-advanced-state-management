@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import {connect} from 'react-redux';
 
 import { addSmurf,addError } from '../actions';
-const AddForm = (props) => {
-    const [state, setState] = useState({
+
+
+const initialState = {
         name:"",
         position:"",
         nickname:"",
         description:""
-    });
+}
 
-    //remove when error state is added
+const AddForm = (props) => {
+    const [state, setState] = useState(initialState);
+
     const errorMessage = props.error;
 
     const handleChange = e => {
@@ -23,18 +26,14 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.addError("smurf is invalid")//dispatch a custom error action
+            props.addError("Name, position and nickname fields are required")//dispatch a custom error action
         } else {
             props.addSmurf(state)//dispatch an addSmurf action
             
         }
-
-        setState({name:"",
-        position:"",
-        nickname:"",
-        description:""})
+        setState(initialState)
+      
     }
-
     return(<section>
         <h2>Add Smurf</h2>
         <form onSubmit={handleSubmit}>

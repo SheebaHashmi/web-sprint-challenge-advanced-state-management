@@ -12,7 +12,7 @@ export const fetchSmurfs = () => dispatch => {
         // console.log(res)
         dispatch({type:FETCH_SUCCESS,payload:res.data})
     })
-    .catch(err => dispatch({type:FETCH_FAILURE,payload:err}))
+    .catch(err => dispatch({type:FETCH_FAILURE,payload:err.message}))
 }
 
 export const addSmurf = ({name,position,nickname,description}) => {
