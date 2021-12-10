@@ -27,13 +27,15 @@ const reducer = (state = initialState,action)=>{
         case "ADD_SMURF":
             return({
                 ...state,
-                smurfs:[...smurfs,action.payload]
+                smurfs:[...state.smurfs,action.payload]
             });
         case "ADD_ERROR":
             return({
                 ...state,
                 error:`${state.error} ${action.payload}`
-            })
+            });
+        default:
+            return state;
 
     }
 }
